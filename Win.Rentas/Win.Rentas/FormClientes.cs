@@ -50,7 +50,7 @@ namespace Win.Rentas
                 clienteBindingSource.ResetBindings(false);
 
                 DeshabilitarHabilitarBotones(true);
-                MessageBox.Show("Producto guardado");
+                MessageBox.Show("Cliente guardado Exitosamente");
             }
             else
             {
