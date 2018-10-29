@@ -47,9 +47,9 @@ namespace Win.Rentas
             if (resultado.Exitoso == true)
             {
                 listaProductosBindingSource.ResetBindings(false);
-
+           
                 DeshabilitarHabilitarBotones(true);
-
+                MessageBox.Show("Producto guardado");
             }
             else
             {

@@ -15,7 +15,7 @@ namespace Win.Rentas
     public partial class FormClientes : Form
     {
         ClientesBL _clientes;
-        private bool toolStripButtonsCancelar;
+        
 
         public FormClientes()
         {
@@ -49,7 +49,8 @@ namespace Win.Rentas
             {
                 clienteBindingSource.ResetBindings(false);
 
-                DeshabilitarHabilitarBotones(false);
+                DeshabilitarHabilitarBotones(true);
+                MessageBox.Show("Producto guardado");
             }
             else
             {
