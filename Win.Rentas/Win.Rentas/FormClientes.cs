@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace Win.Rentas
     public partial class FormClientes : Form
     {
         ClientesBL _clientes;
+        CiudadesBL _ciudadesBL;
         
 
         public FormClientes()
@@ -22,12 +24,16 @@ namespace Win.Rentas
             InitializeComponent();
 
             _clientes = new ClientesBL();
-
             clienteBindingSource.DataSource = _clientes.ObtenerClientes();
+   
 
+
+            _ciudadesBL = new CiudadesBL();
+            listaCiudadesBindingSource.DataSource = _ciudadesBL.ObtenerCiudades();
+       
         }
 
-        private void FormClientes_Load(object sender, EventArgs e)
+        public void FormClientes_Load(object sender, EventArgs e)
         {
 
         }
@@ -42,6 +48,19 @@ namespace Win.Rentas
         {
             clienteBindingSource.EndEdit();
             var cliente = (Cliente)clienteBindingSource.Current;
+
+
+            if (fotoPictureBoxC.Image != null)
+            {
+                cliente.Foto = Program.imagenToByteArray(fotoPictureBoxC.Image);
+
+            }
+
+            else
+            {
+                cliente.Foto = null;
+
+            }
 
             var resultadoc = _clientes.GuardarClientes(cliente);
 
@@ -59,7 +78,7 @@ namespace Win.Rentas
             }
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        private void BindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             _clientes.AgregarCliente();
             clienteBindingSource.MoveLast();
@@ -116,9 +135,57 @@ namespace Win.Rentas
 
         private void toolStripButtonCancelar_Click(object sender, EventArgs e)
         {
-
+            _clientes.CancelarCambios();
             DeshabilitarHabilitarBotones(true);
-            Eliminar(0);
+           
+        }
+
+        private void fotoLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fotoPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        { 
+             var cliente = (Cliente)clienteBindingSource.Current;
+
+            if (cliente != null) 
+
+            { 
+
+            openFileDialog1.ShowDialog();
+            var archivo1 = openFileDialog1.FileName;
+
+                if (archivo1 != "")
+                {
+                    var fileInfo = new FileInfo(archivo1);
+                    var fileStream = fileInfo.OpenRead();
+
+                    fotoPictureBoxC.Image = Image.FromStream(fileStream);
+                            }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Ingrese datos del cliente antes de asignar una imagen");
+             }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fotoPictureBoxC.Image = null;
+        }
+
+        private void ciudadIdLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,25 +8,36 @@ namespace BL.Rentas
 {
     public class SeguridadBL
     {
+        Contexto _contexto;
+
+        public SeguridadBL()
+
+        {
+            _contexto = new Contexto();
+        }
 
         public bool Autorizar(string usuario, string contrasena)
         {
+           
+             var usuarios = _contexto.Usuario.ToList();
 
-            if (usuario == "admin" && contrasena == "123")
+            foreach (var usuarioDB in usuarios)
             {
-                return true;
-            }
-
-            else
-
-            {
-                if (usuario == "user" && contrasena == "456")
+                if (usuario == usuarioDB.Nombre && contrasena == usuarioDB.Contrasena)
                 {
                     return true;
                 }
             }
+
             return false;
         }
+    }
 
+
+    public class Usuario
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Contrasena { get; set; }
     }
 }

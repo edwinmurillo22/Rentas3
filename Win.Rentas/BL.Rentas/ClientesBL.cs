@@ -12,7 +12,7 @@ namespace BL.Rentas
     public class ClientesBL
     {
         Contexto _contexto;
-        BindingList<Cliente> ListaClientes { get; set; }
+      public  BindingList<Cliente> ListaClientes { get; set; }
         public ClientesBL()
         {
 
@@ -29,6 +29,16 @@ namespace BL.Rentas
             _contexto.Clientes.Load();
             ListaClientes = _contexto.Clientes.Local.ToBindingList();
             return ListaClientes;
+        }
+
+        public void CancelarCambios()
+        {
+            foreach (var item in _contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
+
         }
 
         public Resultadoc GuardarClientes(Cliente cliente)
@@ -101,10 +111,24 @@ namespace BL.Rentas
             }
 
 
+            if (cliente.CiudadId == 0)
+            {
+                resultadoc.Mensaje = "Seleccione una ciudad";
+                resultadoc.Exitoso = false;
+            }
+
+
+            if (cliente.CiudadId == 0)
+            {
+                resultadoc.Mensaje = "Seleccione una ciudad";
+                resultadoc.Exitoso = false;
+            }
+
+         
+
+
             return resultadoc;
         }
-
-
 
         public class Cliente
         {
@@ -112,19 +136,26 @@ namespace BL.Rentas
             public int Id { get; set; }
             public string Nombre { get; set; }
             public string Direccion { get; set; }
+            public int CiudadId { get; set; }
+            public Ciudad Ciudad { get; set; }
             public int Telefono { get; set; }
             public string Correo { get; set; }
+            public byte[] Foto { get; set; }
             public bool Activo { get; set; }
 
+            public Cliente()
 
+            {
+                Activo = true;
+            }
         }
 
-        public class Resultadoc
+    }
+
+  public class Resultadoc
         {
             public bool Exitoso { get; set; }
             public string Mensaje { get; set; }
         }
 
-
-    }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace Win.Rentas
     {
 
         ProductosBL _productos;
+        CategoriasBL _categoriasBL;
+        TiposBL _tiposBL;
 
         public FormProductos()
         {
@@ -22,6 +25,14 @@ namespace Win.Rentas
 
             _productos = new ProductosBL();
             listaProductosBindingSource.DataSource = _productos.ObtenerProductos();
+
+            _categoriasBL = new CategoriasBL();
+            listaCategoriasBindingSource.DataSource = _categoriasBL.ObtenerCategorias();
+
+            _tiposBL = new TiposBL();
+            listaTiposBindingSource.DataSource = _tiposBL.ObtenerTipos();
+
+
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
@@ -42,6 +53,19 @@ namespace Win.Rentas
         {
             listaProductosBindingSource.EndEdit();
             var producto = (Producto)listaProductosBindingSource.Current;
+
+            if (fotoPictureBox.Image != null)
+            {
+                producto.foto = Program.imagenToByteArray(fotoPictureBox.Image);
+
+            }
+
+            else
+            {
+                producto.foto = null;
+
+            }
+
             var resultado = _productos.GuardarProducto(producto);
 
             if (resultado.Exitoso == true)
@@ -112,9 +136,57 @@ namespace Win.Rentas
 
         private void toolStripCancelar_Click(object sender, EventArgs e)
         {
+            _productos.CancelarCambios();
             DeshabilitarHabilitarBotones(true);
-            Eliminar(0);
+
         }
+
+        private void button1_Click(object sender, EventArgs e)
+       
+        {
+            var producto = (Producto)listaProductosBindingSource.Current;
+
+            if (producto != null) 
+
+            { 
+
+            openFileDialog1.ShowDialog();
+            var archivo = openFileDialog1.FileName;
+
+                if (archivo != "")
+                {
+                    var fileInfo = new FileInfo(archivo);
+                    var fileStream = fileInfo.OpenRead();
+
+                    fotoPictureBox.Image = Image.FromStream(fileStream);
+                            }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Ingrese Un producto antes de asignar una imagen");
+             }
+
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fotoPictureBox.Image = null;
+        }
+
+        private void tipoIdLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void descripcionLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 
 
