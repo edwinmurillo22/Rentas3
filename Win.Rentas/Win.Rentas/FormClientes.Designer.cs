@@ -384,6 +384,7 @@ namespace Win.Rentas
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "jpg, png| *.jpg; *.png";
+            this.openFileDialog1.FilterIndex = 0;
             // 
             // listaCiudadesBindingSource
             // 

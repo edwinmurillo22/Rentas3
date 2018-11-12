@@ -85,7 +85,18 @@ namespace BL.Rentas
             var resultadoc = new Resultadoc();
             resultadoc.Exitoso = true;
 
-             if (string.IsNullOrEmpty(cliente.Nombre) == true)
+
+            if (cliente == null)
+            {
+                resultadoc.Mensaje = "Agregue un cliente valido";
+                resultadoc.Exitoso = false;
+
+                return resultadoc;
+            }
+
+
+
+            if (string.IsNullOrEmpty(cliente.Nombre) == true)
             {
                 resultadoc.Mensaje = "Ingrese un Nombre";
                 resultadoc.Exitoso = false;

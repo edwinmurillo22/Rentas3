@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static BL.Rentas.ClientesBL;
+using static BL.Rentas.FacturaBL;
 using static BL.Rentas.ProductosBL;
 using static BL.Rentas.TiposBL;
 
@@ -30,8 +31,11 @@ namespace BL.Rentas
         public DbSet<Tipo> Tipos { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Ciudad> Ciudades { get; set; }
+
+        public DbSet<Factura> Facturas { get; set; }
+        public DbSet<Proveedor> Proveedores { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
-       
+
 
     }
 }
