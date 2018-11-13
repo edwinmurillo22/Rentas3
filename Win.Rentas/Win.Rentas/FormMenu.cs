@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Rentas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,11 +21,26 @@ namespace Win.Rentas
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login();
+
+
+        }
+
+
+        public void Autorizar(Usuario usuario)
+        {
+            productosToolStripMenuItem.Enabled = usuario.PuedeVerProductos;
+            clientesToolStripMenuItem.Enabled = usuario.PuedeVerClientes;
+           
+            productosToolStripMenuItem.Enabled = usuario.PuedeVerProductos;
+
+
+
         }
 
         private void Login()
         {
             var formLogin = new FormLogin();
+            formLogin.MenuPrincipal = this;    
             formLogin.ShowDialog();
         }
 

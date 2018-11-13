@@ -13,6 +13,8 @@ namespace Win.Rentas
 {
     public partial class FormLogin : Form
     {
+        public FormMenu MenuPrincipal { get; set; }
+
         SeguridadBL _seguridad;
 
         public FormLogin()
@@ -46,9 +48,11 @@ namespace Win.Rentas
 
             var resultado = _seguridad.Autorizar(usuario, contrasena);
 
-            if (resultado== true)
+            if (resultado.Exitoso== true)
 
-             {     
+             {
+
+                MenuPrincipal.Autorizar(resultado.Usuario);
 
                 MessageBox.Show("Contrasena Aceptada");
           
@@ -57,10 +61,12 @@ namespace Win.Rentas
 
             else
             {
-                MessageBox.Show("Usuario o contrasena incorrecto");
+                MessageBox.Show(resultado.Mensaje);
             
             }
 
+            button1.Enabled = true;
+            button1.Text = "Aceptar";
         }
     }
 }

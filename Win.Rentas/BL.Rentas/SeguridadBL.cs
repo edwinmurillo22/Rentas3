@@ -16,20 +16,24 @@ namespace BL.Rentas
             _contexto = new Contexto();
         }
 
-        public bool Autorizar(string usuario, string contrasena)
+        public Resultado Autorizar(string usuario, string contrasena)
         {
-           
-             var usuarios = _contexto.Usuario.ToList();
+            var resultado = new Resultado();
+            var usuarios = _contexto.Usuario.ToList();
 
             foreach (var usuarioDB in usuarios)
             {
                 if (usuario == usuarioDB.Nombre && contrasena == usuarioDB.Contrasena)
                 {
-                    return true;
+                    resultado.Exitoso = true;
+                    resultado.Usuario = usuarioDB;
+
+                    return resultado;
                 }
             }
 
-            return false;
+            resultado.Mensaje = "Usuario o contraseña incorrecta";
+            return resultado;
         }
     }
 
@@ -39,5 +43,12 @@ namespace BL.Rentas
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Contrasena { get; set; }
+
+
+
+        public bool PuedeVerFacturas { get; set; }
+        public bool PuedeVerClientes { get; set; }
+        public bool PuedeVerProductos { get; set; }
+        public bool PuedeVerReportes { get; set; }
     }
 }

@@ -15,8 +15,22 @@ namespace BL.Rentas
             var usuarioAdmin = new Usuario();
             usuarioAdmin.Nombre = "admin";
             usuarioAdmin.Contrasena = "123";
+            usuarioAdmin.PuedeVerFacturas = true;
+            usuarioAdmin.PuedeVerClientes = true;
+            usuarioAdmin.PuedeVerProductos = true;
+    
 
             contexto.Usuario.Add(usuarioAdmin);
+
+            var usuario1 = new Usuario();
+            usuario1.Nombre = "stalen";
+            usuario1.Contrasena = "spiderman";
+            usuario1.PuedeVerFacturas = true;
+            usuario1.PuedeVerClientes = false;
+            usuario1.PuedeVerProductos = false;
+            usuario1.PuedeVerReportes = false;
+
+            contexto.Usuario.Add(usuario1);
 
 
             var categoria1 = new Categoria();

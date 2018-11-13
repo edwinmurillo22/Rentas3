@@ -57,6 +57,7 @@
     <Compile Include="FacturaBL.cs" />
     <Compile Include="ProductosBL.cs" />
     <Compile Include="ProveedoresBL.cs" />
+    <Compile Include="Resultado.cs" />
     <Compile Include="SeguridadBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TiposBL.cs" />

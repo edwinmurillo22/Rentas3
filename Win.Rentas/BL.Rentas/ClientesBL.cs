@@ -104,9 +104,9 @@ namespace BL.Rentas
             }
 
 
-            if (string.IsNullOrEmpty(cliente.Direccion) == true )
+            if (cliente.Direccion.Length < 3)
             {
-                resultadoc.Mensaje = "Ingrese una Direccion";
+                resultadoc.Mensaje = "Ingrese una Direccion mayor de 3 caracteres";
                 resultadoc.Exitoso = false;
             }
 
