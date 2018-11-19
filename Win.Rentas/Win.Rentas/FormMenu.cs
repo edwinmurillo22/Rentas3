@@ -85,5 +85,14 @@ namespace Win.Rentas
             formProveedores.MdiParent = this;
             formProveedores.Show();
         }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formCompras = new FormCompras();
+            formCompras.MdiParent = this;
+            formCompras.Show();
+
+
+        }
     }
 }

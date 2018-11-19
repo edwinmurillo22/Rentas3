@@ -33,7 +33,9 @@ namespace BL.Rentas
         public DbSet<Ciudad> Ciudades { get; set; }
 
         public DbSet<Factura> Facturas { get; set; }
+        public DbSet<Compra> Compras { get; set; }
         public DbSet<Proveedor> Proveedores { get; set; }
+
         public DbSet<Cliente> Clientes { get; set; }
 
 

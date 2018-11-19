@@ -52,6 +52,7 @@
     <Compile Include="CategoriasBL.cs" />
     <Compile Include="CiudadesBL.cs" />
     <Compile Include="ClientesBL.cs" />
+    <Compile Include="ComprasBL.cs" />
     <Compile Include="Contexto.cs" />
     <Compile Include="DatosdeInicio.cs" />
     <Compile Include="FacturaBL.cs" />
