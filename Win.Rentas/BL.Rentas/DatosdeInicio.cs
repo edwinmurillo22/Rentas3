@@ -18,7 +18,9 @@ namespace BL.Rentas
             usuarioAdmin.PuedeVerFacturas = true;
             usuarioAdmin.PuedeVerClientes = true;
             usuarioAdmin.PuedeVerProductos = true;
-    
+            usuarioAdmin.PuedeVerCompras = true;
+            usuarioAdmin.PuedeVerProveedores = true;
+
 
             contexto.Usuario.Add(usuarioAdmin);
 
@@ -26,9 +28,12 @@ namespace BL.Rentas
             usuario1.Nombre = "stalen";
             usuario1.Contrasena = "spiderman";
             usuario1.PuedeVerFacturas = true;
-            usuario1.PuedeVerClientes = false;
-            usuario1.PuedeVerProductos = false;
-            usuario1.PuedeVerReportes = false;
+            usuario1.PuedeVerClientes = true;
+            usuario1.PuedeVerProductos = true;
+            usuario1.PuedeVerReportes = true;
+            usuarioAdmin.PuedeVerCompras = true;
+            usuarioAdmin.PuedeVerProveedores = true;
+
 
             contexto.Usuario.Add(usuario1);
 

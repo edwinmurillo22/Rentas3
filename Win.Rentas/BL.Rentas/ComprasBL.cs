@@ -18,6 +18,8 @@ namespace BL.Rentas
         public ComprasBL()
         {
             _contexto = new Contexto();
+            ListaCompras = new BindingList<Compra>();
+
         }
 
 
@@ -47,6 +49,14 @@ namespace BL.Rentas
             }
         }
 
+        public BindingList<Compra> ObtenerCompras(DateTime fechainicial, DateTime fechafinal)
+        {
+            _contexto.Compras.Include("CompraDetalle").Where(compra => compra.Fecha >= fechainicial
+            && compra.Fecha <= fechafinal && compra.Activo == true).ToList();
+
+            ListaCompras = _contexto.Compras.Local.ToBindingList();
+            return ListaCompras;
+        }
 
         public void RemoverCompraDetalle(Compra compra, CompraDetalle compraDetalle)
         {
@@ -198,6 +208,15 @@ namespace BL.Rentas
 
 
 
+        public void RefrescarDatos(int compraId)
+        {
+            var compra = _contexto.Compras.Find(compraId);
+            if (compra != null)
+            {
+                _contexto.Entry(compra).Reload();
+            }
+        }
+
     }
 
 
@@ -220,7 +239,10 @@ namespace BL.Rentas
                 CompraDetalle = new BindingList<CompraDetalle>();
                 Activo = true;
             }
-        }
+
+       
+    
+}       
 
         public class CompraDetalle
         {

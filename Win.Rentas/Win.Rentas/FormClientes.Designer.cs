@@ -67,6 +67,7 @@ namespace Win.Rentas
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listaCiudadesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ciudadIdComboBox = new System.Windows.Forms.ComboBox();
+            this.buttonRefrescar = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             correoLabel = new System.Windows.Forms.Label();
             direccionLabel = new System.Windows.Forms.Label();
@@ -403,11 +404,22 @@ namespace Win.Rentas
             this.ciudadIdComboBox.TabIndex = 4;
             this.ciudadIdComboBox.ValueMember = "Id";
             // 
+            // buttonRefrescar
+            // 
+            this.buttonRefrescar.Location = new System.Drawing.Point(343, 12);
+            this.buttonRefrescar.Name = "buttonRefrescar";
+            this.buttonRefrescar.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefrescar.TabIndex = 18;
+            this.buttonRefrescar.Text = "Refrescar";
+            this.buttonRefrescar.UseVisualStyleBackColor = true;
+            this.buttonRefrescar.Click += new System.EventHandler(this.buttonRefrescar_Click);
+            // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 315);
+            this.Controls.Add(this.buttonRefrescar);
             this.Controls.Add(ciudadIdLabel);
             this.Controls.Add(this.ciudadIdComboBox);
             this.Controls.Add(this.button2);
@@ -470,5 +482,6 @@ namespace Win.Rentas
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.BindingSource listaCiudadesBindingSource;
         private System.Windows.Forms.ComboBox ciudadIdComboBox;
+        private System.Windows.Forms.Button buttonRefrescar;
     }
 }

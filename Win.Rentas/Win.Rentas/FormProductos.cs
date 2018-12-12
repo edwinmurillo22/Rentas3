@@ -1,4 +1,4 @@
-﻿using BL.Rentas;
+﻿    using BL.Rentas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +40,7 @@ namespace Win.Rentas
 
         }
 
-    private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             _productos.AgregarProducto();
             listaProductosBindingSource.MoveLast();
@@ -71,7 +71,7 @@ namespace Win.Rentas
             if (resultado.Exitoso == true)
             {
                 listaProductosBindingSource.ResetBindings(false);
-           
+
                 DeshabilitarHabilitarBotones(true);
                 MessageBox.Show("Producto guardado");
             }
@@ -81,7 +81,7 @@ namespace Win.Rentas
             }
         }
 
-    
+
 
 
         private void DeshabilitarHabilitarBotones(bool valor)
@@ -102,26 +102,26 @@ namespace Win.Rentas
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-           
+
             if (idTextBox.Text != "")
             {
                 var resultado = MessageBox.Show("Desea eliminar este registro?", "Eliminar", MessageBoxButtons.YesNo);
                 if (resultado == DialogResult.Yes)
-            {
-                var id = Convert.ToInt32(idTextBox.Text);
-                Eliminar(id);
+                {
+                    var id = Convert.ToInt32(idTextBox.Text);
+                    Eliminar(id);
+
+                }
+
 
             }
+        }
 
-                
-            }
-            }
-            
         private void Eliminar(int id)
-        { 
+        {
             var resultado = _productos.EliminarProducto(id);
 
-            if (resultado== true)
+            if (resultado == true)
             {
 
                 listaProductosBindingSource.ResetBindings(false);
@@ -142,16 +142,16 @@ namespace Win.Rentas
         }
 
         private void button1_Click(object sender, EventArgs e)
-       
-        {
+
+        {   
             var producto = (Producto)listaProductosBindingSource.Current;
 
-            if (producto != null) 
+            if (producto != null)
 
-            { 
+            {
 
-            openFileDialog1.ShowDialog();
-            var archivo = openFileDialog1.FileName;
+                openFileDialog1.ShowDialog();
+                var archivo = openFileDialog1.FileName;
 
                 if (archivo != "")
                 {
@@ -159,14 +159,14 @@ namespace Win.Rentas
                     var fileStream = fileInfo.OpenRead();
 
                     fotoPictureBox.Image = Image.FromStream(fileStream);
-                            }
+                }
 
 
             }
             else
             {
                 MessageBox.Show("Ingrese Un producto antes de asignar una imagen");
-             }
+            }
 
         }
 
@@ -186,8 +186,18 @@ namespace Win.Rentas
 
         }
 
-       
-    }
+        private void buttonRefrescar_Click(object sender, EventArgs e)
+        {
+            if (idTextBox.Text != "")
+            {
+                var productoId = Convert.ToInt32(idTextBox.Text);
+                _productos.RefrescarDatos(productoId);
 
+                listaProductosBindingSource.ResetBindings(false);
+            }
+        }
+
+            
+    }
 
 }

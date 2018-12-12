@@ -36,8 +36,8 @@
             System.Windows.Forms.Label subtotalLabel;
             System.Windows.Forms.Label totalLabel;
             System.Windows.Forms.Label clienteIdLabel1;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFactura));
             System.Windows.Forms.Label clienteIdLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFactura));
             this.listaFacturasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listaFacturasBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -71,6 +71,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.clienteIdComboBox = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
@@ -149,6 +150,15 @@
             clienteIdLabel1.Name = "clienteIdLabel1";
             clienteIdLabel1.Size = new System.Drawing.Size(0, 13);
             clienteIdLabel1.TabIndex = 28;
+            // 
+            // clienteIdLabel
+            // 
+            clienteIdLabel.AutoSize = true;
+            clienteIdLabel.Location = new System.Drawing.Point(30, 165);
+            clienteIdLabel.Name = "clienteIdLabel";
+            clienteIdLabel.Size = new System.Drawing.Size(42, 13);
+            clienteIdLabel.TabIndex = 3;
+            clienteIdLabel.Text = "Cliente:";
             // 
             // listaFacturasBindingSource
             // 
@@ -458,20 +468,22 @@
             this.clienteIdComboBox.TabIndex = 29;
             this.clienteIdComboBox.ValueMember = "Id";
             // 
-            // clienteIdLabel
+            // button3
             // 
-            clienteIdLabel.AutoSize = true;
-            clienteIdLabel.Location = new System.Drawing.Point(30, 165);
-            clienteIdLabel.Name = "clienteIdLabel";
-            clienteIdLabel.Size = new System.Drawing.Size(42, 13);
-            clienteIdLabel.TabIndex = 3;
-            clienteIdLabel.Text = "Cliente:";
+            this.button3.Location = new System.Drawing.Point(366, 36);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 33;
+            this.button3.Text = "Refrescar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FormFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(693, 514);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -542,5 +554,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource facturaDetalleBindingSource;
         private System.Windows.Forms.ComboBox clienteIdComboBox;
+        private System.Windows.Forms.Button button3;
     }
 }

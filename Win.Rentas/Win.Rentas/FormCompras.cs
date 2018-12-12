@@ -1,4 +1,4 @@
-﻿using BL.Rentas;
+﻿    using BL.Rentas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,7 +45,7 @@ namespace Win.Rentas
         {
             _comprasBL.AgregarCompra();
             listaComprasBindingSource.MoveLast();
-          
+
             DeshabilitarHabilitarBotones(false);
         }
 
@@ -106,15 +106,15 @@ namespace Win.Rentas
 
         }
 
- 
+
 
         private void button2_Click(object sender, EventArgs e)
         {
 
-             var compra = (Compra)listaComprasBindingSource.Current;
+            var compra = (Compra)listaComprasBindingSource.Current;
             var compraDetalle = (CompraDetalle)compraDetalleBindingSource.Current;
 
-             _comprasBL.RemoverCompraDetalle(compra, compraDetalle);
+            _comprasBL.RemoverCompraDetalle(compra, compraDetalle);
 
             DeshabilitarHabilitarBotones(false);
 
@@ -134,7 +134,7 @@ namespace Win.Rentas
         private void compraDetalleDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var compra = (Compra)listaComprasBindingSource.Current;
-         
+
             _comprasBL.CalcularCompra(compra);
             listaComprasBindingSource.ResetBindings(false);
 
@@ -156,7 +156,7 @@ namespace Win.Rentas
 
 
             }
-    }
+        }
 
 
         private void Anular(int id)
@@ -179,7 +179,7 @@ namespace Win.Rentas
 
             var compra = (Compra)listaComprasBindingSource.Current;
 
-            if (compra!= null && compra.Id != 0 && compra.Activo == false)
+            if (compra != null && compra.Id != 0 && compra.Activo == false)
             {
                 label1.Visible = true;
             }
@@ -222,5 +222,16 @@ namespace Win.Rentas
 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (idTextBox.Text != "")
+            {
+                var compraId = Convert.ToInt32(idTextBox.Text);
+                _comprasBL.RefrescarDatos(compraId);
+
+                listaComprasBindingSource.ResetBindings(false);
+            }
+        }       
     }
 }

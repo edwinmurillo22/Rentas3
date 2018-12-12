@@ -181,5 +181,22 @@ namespace Win.Rentas
 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (idTextBox.Text != "")
+            {
+                var facturaId = Convert.ToInt32(idTextBox.Text);
+                _facturaBL.RefrescarDatos(facturaId);
+
+                listaFacturaBindingSource.ResetBindings(false);
+                listaFacturasBindingSource.ResetBindings(false);
+                listaProductosBindingSource.ResetBindings(false);
+                facturaDetalleBindingSource.ResetBindings(false);
+               
+                
+               
+            }
+        }
     }
 }

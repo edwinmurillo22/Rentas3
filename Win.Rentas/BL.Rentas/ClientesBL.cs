@@ -161,7 +161,17 @@ namespace BL.Rentas
             }
         }
 
+        public void RefrescarDatos(int clienteId)
+        {
+            var cliente = _contexto.Clientes.Find(clienteId);
+            if (cliente != null)
+            {
+                _contexto.Entry(cliente).Reload();
+            }
+        }
     }
+
+
 
   public class Resultadoc
         {

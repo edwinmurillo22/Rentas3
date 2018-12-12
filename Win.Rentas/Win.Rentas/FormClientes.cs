@@ -187,5 +187,16 @@ namespace Win.Rentas
         {
 
         }
+
+        private void buttonRefrescar_Click(object sender, EventArgs e)
+        {
+            if (idTextBox.Text != "")
+            {
+                var clienteId = Convert.ToInt32(idTextBox.Text);
+                _clientes.RefrescarDatos(clienteId);
+
+                clienteBindingSource.ResetBindings(false);
+            }
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace Win.Rentas
             listaProveedoresBindingSource.EndEdit();
             var proveedor = (Proveedor)listaProveedoresBindingSource.Current;
 
-            
+
             var resultado = _proveedores.GuardarProveedor(proveedor);
 
             if (resultado.Exitoso == true)
@@ -110,6 +110,17 @@ namespace Win.Rentas
         {
             _proveedores.CancelarCambios();
             DeshabilitarHabilitarBotones(true);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (idTextBox.Text != "")
+            {
+                var proveedorId = Convert.ToInt32(idTextBox.Text);
+                _proveedores.RefrescarDatos(proveedorId);
+
+                listaProveedoresBindingSource.ResetBindings(false);
+            }
         }
     }
 }

@@ -49,6 +49,8 @@ namespace BL.Rentas
         public bool PuedeVerFacturas { get; set; }
         public bool PuedeVerClientes { get; set; }
         public bool PuedeVerProductos { get; set; }
+        public bool PuedeVerCompras { get; set; }
+        public bool PuedeVerProveedores { get; set; }
         public bool PuedeVerReportes { get; set; }
     }
 }

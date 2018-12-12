@@ -94,5 +94,52 @@ namespace Win.Rentas
 
 
         }
+
+        private void reportesDeProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteProductos = new FormReporteProductos();
+            formReporteProductos.MdiParent = this;
+            formReporteProductos.Show();
+
+        }
+
+        private void reporteDeFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteFactura = new FormReporteFactura();
+            formReporteFactura.MdiParent = this;
+            formReporteFactura.Show();
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reportesDeRentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteProveedores = new FormReporteProveedores();
+            formReporteProveedores.MdiParent = this;
+            formReporteProveedores.Show();
+        }
+
+        private void reporteDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            var formReporteClientes = new FormReporteClientes();
+            formReporteClientes.MdiParent = this;
+            formReporteClientes.Show();
+
+
+        }
+
+        private void reporteDeComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteCompras = new FormReporteCompras();
+            formReporteCompras.MdiParent = this;
+            formReporteCompras.Show();
+
+
+        }
     }
 }

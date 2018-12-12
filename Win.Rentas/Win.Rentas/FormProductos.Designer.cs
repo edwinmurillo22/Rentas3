@@ -66,6 +66,7 @@
             this.tipoIdComboBox = new System.Windows.Forms.ComboBox();
             this.listaCategoriasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idComboBox = new System.Windows.Forms.ComboBox();
+            this.buttonRefrescar = new System.Windows.Forms.Button();
             activoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             existenciaLabel = new System.Windows.Forms.Label();
@@ -408,11 +409,22 @@
             this.idComboBox.TabIndex = 19;
             this.idComboBox.ValueMember = "Id";
             // 
+            // buttonRefrescar
+            // 
+            this.buttonRefrescar.Location = new System.Drawing.Point(319, 36);
+            this.buttonRefrescar.Name = "buttonRefrescar";
+            this.buttonRefrescar.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefrescar.TabIndex = 20;
+            this.buttonRefrescar.Text = "Refrescar";
+            this.buttonRefrescar.UseVisualStyleBackColor = true;
+            this.buttonRefrescar.Click += new System.EventHandler(this.buttonRefrescar_Click);
+            // 
             // FormProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 380);
+            this.Controls.Add(this.buttonRefrescar);
             this.Controls.Add(idLabel1);
             this.Controls.Add(this.idComboBox);
             this.Controls.Add(tipoIdLabel);
@@ -477,5 +489,6 @@
         private System.Windows.Forms.ComboBox tipoIdComboBox;
         private System.Windows.Forms.BindingSource listaCategoriasBindingSource;
         private System.Windows.Forms.ComboBox idComboBox;
+        private System.Windows.Forms.Button buttonRefrescar;
     }
 }

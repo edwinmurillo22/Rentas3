@@ -120,7 +120,22 @@ namespace BL.Rentas
             return false;
 
         }
+
+
+
+
+        //Formulario a Actualizar
+
+        public void RefrescarDatos(int proveedorId)
+        {
+            var proveedor = _contexto.Proveedores.Find(proveedorId);
+            if (proveedor != null)
+            {
+                _contexto.Entry(proveedor).Reload();
+            }
+        }
     }
+
 
 
 

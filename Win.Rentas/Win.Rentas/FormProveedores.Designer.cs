@@ -37,6 +37,7 @@
             System.Windows.Forms.Label activoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProveedores));
             this.listaProveedoresBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.listaProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -56,7 +57,7 @@
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.telefonoTextBox = new System.Windows.Forms.TextBox();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.listaProveedoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             direccionLabel = new System.Windows.Forms.Label();
             emailLabel = new System.Windows.Forms.Label();
             idLabel = new System.Windows.Forms.Label();
@@ -153,6 +154,10 @@
             this.listaProveedoresBindingNavigator.Size = new System.Drawing.Size(531, 25);
             this.listaProveedoresBindingNavigator.TabIndex = 0;
             this.listaProveedoresBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // listaProveedoresBindingSource
+            // 
+            this.listaProveedoresBindingSource.DataSource = typeof(BL.Rentas.Proveedor);
             // 
             // bindingNavigatorCountItem
             // 
@@ -310,15 +315,22 @@
             this.activoCheckBox.TabIndex = 12;
             this.activoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // listaProveedoresBindingSource
+            // button1
             // 
-            this.listaProveedoresBindingSource.DataSource = typeof(BL.Rentas.Proveedor);
+            this.button1.Location = new System.Drawing.Point(362, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Refrescar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(531, 339);
+            this.Controls.Add(this.button1);
             this.Controls.Add(activoLabel);
             this.Controls.Add(this.activoCheckBox);
             this.Controls.Add(direccionLabel);
@@ -367,5 +379,6 @@
         private System.Windows.Forms.TextBox telefonoTextBox;
         private System.Windows.Forms.ToolStripButton toolStripButtonCancelar;
         private System.Windows.Forms.CheckBox activoCheckBox;
+        private System.Windows.Forms.Button button1;
     }
 }

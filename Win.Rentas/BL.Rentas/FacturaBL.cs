@@ -1,4 +1,4 @@
-﻿using BL.Rentas;
+﻿        using BL.Rentas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +29,22 @@ namespace BL.Rentas
 
             return ListaFacturas;
         }
+
+        public BindingList<Factura> ObtenerFacturas(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            _contexto.Facturas.Include("FacturaDetalle")
+                .Where(factura => factura.Fecha >= fechaInicial
+                && factura.Fecha <= fechaFinal && factura.Activo == true)
+                .ToList();
+
+            ListaFacturas = _contexto.Facturas.Local.ToBindingList();
+
+            return ListaFacturas;
+        }
+
+
+
+
 
         public void AgregarFactura()
         {
@@ -201,8 +217,20 @@ namespace BL.Rentas
             return false;
         }
 
+        //Formulario a Actualizar
 
+        public void RefrescarDatos(int facturaId)
+        {
+            var factura = _contexto.Facturas.Find(facturaId);
+            if (factura != null)
+            {
+                _contexto.Entry(factura).Reload();
+            }
+        }
     }
+
+
+
 
 
     public class Factura
